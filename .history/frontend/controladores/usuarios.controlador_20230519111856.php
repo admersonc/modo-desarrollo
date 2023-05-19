@@ -709,11 +709,8 @@ class ControladorUsuarios{
 
 			}
 
-			//$telefono=
-
 			$datos = array("nombre" => $_POST["editarNombre"],
 						   "email" => $_POST["editarEmail"],
-						   "telefono"=> $_POST["editarTelefono"],
 						   "password" => $password,
 						   "foto" => $ruta,
 						   "id" => $_POST["idUsuario"]);
@@ -729,7 +726,6 @@ class ControladorUsuarios{
 				$_SESSION["nombre"] = $datos["nombre"];
 				$_SESSION["foto"] = $datos["foto"];
 				$_SESSION["email"] = $datos["email"];
-				$_SESSION["telefono"] = $datos["telefono"];
 				$_SESSION["password"] = $datos["password"];
 				$_SESSION["modo"] = $_POST["modoUsuario"];
 

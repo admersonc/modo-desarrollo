@@ -101,7 +101,7 @@ var whatsappchat = {
                 console.log('selector is not right format should be #example_id of .example_class');
             }
             if(element !=null){
-                var chatBox = '<div class="ayoan_whatsapp_chatbox_container" style="position: fixed; bottom: 60px;">' +
+                var chatBox = '<div class="ayoan_whatsapp_chatbox_container" style="position: fixed; bottom: 50px;">' +
                     '<div class="rs-openChat" style="display: none"> <div class="ayoan_whatsapp_chatbox">' +
                     '<div class="widget-wrapper"> <div class="widget-header"> <div class="col col-1">' +
                     '<img class="header-icon" style="transform: scale(220%)" src="https://www.logo.wine/a/logo/WhatsApp/WhatsApp-Logo.wine.svg"> </div><div class="col col-2">' +
@@ -120,7 +120,7 @@ var whatsappchat = {
                 for (var i = 0; i < goToWhatsapp.length; i++) {
                     goToWhatsapp[i].addEventListener("click", function(){
                         var userId = this.getAttribute("data-userId");
-                        message = "Hello!";
+                        message = "Hola uniformes lulecc, como te ayudamos?";
                         sendWPMessage(settings.users[parseInt(userId)].phone, message);
                     });
                 }
@@ -173,9 +173,10 @@ function sendWPMessage(phone, message=''){
     if(isMobileTrue){
         apiEndPoint = apiEndPoint+'api';
     }else{
-        apiEndPoint = apiEndPoint+'web';
+        apiEndPoint = apiEndPoint+'api';
     }
-    apiEndPoint = apiEndPoint+'.whatsapp.com/send?phone=' + phone + '&text=' + encodeURI(message);
+    apiEndPoint = apiEndPoint+'.whatsapp.com/send/?phone=' + phone + '&text=' + encodeURI(message);
+    //https://api.whatsapp.com/send/?phone=51926439010&text=admer
     
     window.open(apiEndPoint);
 }

@@ -370,169 +370,169 @@ SECCIÓN PERFIL
 
 		  	<div id="deseos" class="tab-pane fade">
 		    	
-				<?php
+			<?php
 
-					$item = $_SESSION["id"];
+				$item = $_SESSION["id"];
 
-					$deseos = ControladorUsuarios::ctrMostrarDeseos($item);
+				$deseos = ControladorUsuarios::ctrMostrarDeseos($item);
 
-					if(!$deseos){
+				if(!$deseos){
 
-						echo '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center error404">
-								
-							<h1><small>¡Oops!</small></h1>
-					
-							<h2>Aún no tiene productos en su lista de deseos</h2>
+					echo '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center error404">
+				               
+			    		<h1><small>¡Oops!</small></h1>
+			    
+			    		<h2>Aún no tiene productos en su lista de deseos</h2>
 
-						</div>';
-					
-					}else{
+			  		</div>';
+				
+				}else{
 
-						foreach ($deseos as $key => $value1) {
+					foreach ($deseos as $key => $value1) {
 
-							$ordenar = "id";
-							$valor = $value1["id_producto"];
-							$item = "id";
+						$ordenar = "id";
+						$valor = $value1["id_producto"];
+						$item = "id";
 
-							$productos = ControladorProductos::ctrListarProductos($ordenar, $item, $valor);
+						$productos = ControladorProductos::ctrListarProductos($ordenar, $item, $valor);
 
-							echo '<ul class="grid0">';
+						echo '<ul class="grid0">';
 
-								foreach ($productos as $key => $value2) {
-								
-								echo '<li class="col-md-3 col-sm-6 col-xs-12">
+							foreach ($productos as $key => $value2) {
+							
+							echo '<li class="col-md-3 col-sm-6 col-xs-12">
 
-										<figure>
+									<figure>
+										
+										<a href="'.$url.$value2["ruta"].'" class="pixelProducto">
+											
+											<img src="'.$servidor.$value2["portada"].'" class="img-responsive">
+
+										</a>
+
+									</figure>
+
+									<h4>
+							
+										<small>
 											
 											<a href="'.$url.$value2["ruta"].'" class="pixelProducto">
 												
-												<img src="'.$servidor.$value2["portada"].'" class="img-responsive">
+												'.$value2["titulo"].'<br>
 
-											</a>
+												<span style="color:rgba(0,0,0,0)">-</span>';
 
-										</figure>
+												$fecha = date('Y-m-d');
+												$fechaActual = strtotime('-30 day', strtotime($fecha));
+												$fechaNueva = date('Y-m-d', $fechaActual);
 
-										<h4>
-								
-											<small>
-												
-												<a href="'.$url.$value2["ruta"].'" class="pixelProducto">
-													
-													'.$value2["titulo"].'<br>
+												if($fechaNueva < $value["fecha"]){
 
-													<span style="color:rgba(0,0,0,0)">-</span>';
-
-													$fecha = date('Y-m-d');
-													$fechaActual = strtotime('-30 day', strtotime($fecha));
-													$fechaNueva = date('Y-m-d', $fechaActual);
-
-													if($fechaNueva < $value["fecha"]){
-
-														echo '<span class="label label-warning fontSize">Nuevo</span> ';
-
-													}
-
-													if($value2["oferta"] != 0){
-
-														echo '<span class="label label-warning fontSize">'.$value2["descuentoOferta"].'% off</span>';
-
-													}
-
-												echo '</a>	
-
-											</small>			
-
-										</h4>
-
-										<div class="col-xs-6 precio">';
-
-										if($value2["precio"] == 0){
-
-											echo '<h2 style="margin-top:-10px"><small>GRATIS</small></h2>';
-
-										}else{
-
-											if($value2["oferta"] != 0){
-
-												echo '<h2 style="margin-top:-10px">
-
-														<small>
-									
-															<strong class="oferta" style="font-size:12px">S/'.$value2["precio"].'</strong>
-
-														</small>
-
-														<small>$'.$value2["precioOferta"].'</small>
-													
-													</h2>';
-
-											}else{
-
-												echo '<h2 style="margin-top:-10px"><small>S/'.$value2["precio"].'</small></h2>';
-
-											}
-											
-										}
-														
-										echo '</div>
-
-										<div class="col-xs-6 enlaces">
-											
-											<div class="btn-group pull-right">
-												
-												<button type="button" class="btn btn-danger btn-xs quitarDeseo" idDeseo="'.$value1["id"].'" data-toggle="tooltip" title="Quitar de mi lista de deseos">
-													
-													<i class="fa fa-heart" aria-hidden="true"></i>
-
-												</button>';
-
-												if($value2["tipo"] == "virtual" && $value2["precio"] != 0){
-
-													if($value2["oferta"] != 0){
-
-														echo '<button type="button" class="btn btn-default btn-xs agregarCarrito"  idProducto="'.$value2["id"].'" imagen="'.$servidor.$value2["portada"].'" titulo="'.$value2["titulo"].'" precio="'.$value2["precioOferta"].'" tipo="'.$value2["tipo"].'" peso="'.$value2["peso"].'" data-toggle="tooltip" title="Agregar al carrito de compras">
-
-														<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-
-														</button>';
-
-													}else{
-
-														echo '<button type="button" class="btn btn-default btn-xs agregarCarrito"  idProducto="'.$value2["id"].'" imagen="'.$servidor.$value2["portada"].'" titulo="'.$value2["titulo"].'" precio="'.$value2["precio"].'" tipo="'.$value2["tipo"].'" peso="'.$value2["peso"].'" data-toggle="tooltip" title="Agregar al carrito de compras">
-
-														<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-
-														</button>';
-
-													}
+													echo '<span class="label label-warning fontSize">Nuevo</span> ';
 
 												}
 
-												echo '<a href="'.$url.$value2["ruta"].'" class="pixelProducto">
-												
-													<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
-														
-														<i class="fa fa-eye" aria-hidden="true"></i>
+												if($value2["oferta"] != 0){
 
-													</button>	
-												
-												</a>
+													echo '<span class="label label-warning fontSize">'.$value2["descuentoOferta"].'% off</span>';
 
-											</div>
+												}
+
+											echo '</a>	
+
+										</small>			
+
+									</h4>
+
+									<div class="col-xs-6 precio">';
+
+									if($value2["precio"] == 0){
+
+										echo '<h2 style="margin-top:-10px"><small>GRATIS</small></h2>';
+
+									}else{
+
+										if($value2["oferta"] != 0){
+
+											echo '<h2 style="margin-top:-10px">
+
+													<small>
+								
+														<strong class="oferta" style="font-size:12px">S/'.$value2["precio"].'</strong>
+
+													</small>
+
+													<small>$'.$value2["precioOferta"].'</small>
+												
+												</h2>';
+
+										}else{
+
+											echo '<h2 style="margin-top:-10px"><small>S/'.$value2["precio"].'</small></h2>';
+
+										}
+										
+									}
+													
+									echo '</div>
+
+									<div class="col-xs-6 enlaces">
+										
+										<div class="btn-group pull-right">
+											
+											<button type="button" class="btn btn-danger btn-xs quitarDeseo" idDeseo="'.$value1["id"].'" data-toggle="tooltip" title="Quitar de mi lista de deseos">
+												
+												<i class="fa fa-heart" aria-hidden="true"></i>
+
+											</button>';
+
+											if($value2["tipo"] == "virtual" && $value2["precio"] != 0){
+
+												if($value2["oferta"] != 0){
+
+													echo '<button type="button" class="btn btn-default btn-xs agregarCarrito"  idProducto="'.$value2["id"].'" imagen="'.$servidor.$value2["portada"].'" titulo="'.$value2["titulo"].'" precio="'.$value2["precioOferta"].'" tipo="'.$value2["tipo"].'" peso="'.$value2["peso"].'" data-toggle="tooltip" title="Agregar al carrito de compras">
+
+													<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+													</button>';
+
+												}else{
+
+													echo '<button type="button" class="btn btn-default btn-xs agregarCarrito"  idProducto="'.$value2["id"].'" imagen="'.$servidor.$value2["portada"].'" titulo="'.$value2["titulo"].'" precio="'.$value2["precio"].'" tipo="'.$value2["tipo"].'" peso="'.$value2["peso"].'" data-toggle="tooltip" title="Agregar al carrito de compras">
+
+													<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+													</button>';
+
+												}
+
+											}
+
+											echo '<a href="'.$url.$value2["ruta"].'" class="pixelProducto">
+											
+												<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" title="Ver producto">
+													
+													<i class="fa fa-eye" aria-hidden="true"></i>
+
+												</button>	
+											
+											</a>
 
 										</div>
 
-									</li>';
-								}
+									</div>
 
-							echo '</ul>';
+								</li>';
+							}
 
+						echo '</ul>';
 
-						}
 
 					}
 
-				?>
+				}
+
+			?>
 
 
 		  	</div>
@@ -553,33 +553,33 @@ SECCIÓN PERFIL
 
 							<figure id="imgPerfil">
 								
-								<?php
+							<?php
 
-								echo '<input type="hidden" value="'.$_SESSION["id"].'" id="idUsuario" name="idUsuario">
-									<input type="hidden" value="'.$_SESSION["password"].'" name="passUsuario">
-									<input type="hidden" value="'.$_SESSION["foto"].'" name="fotoUsuario" id="fotoUsuario">
-									<input type="hidden" value="'.$_SESSION["modo"].'" name="modoUsuario" id="modoUsuario">';
+							echo '<input type="hidden" value="'.$_SESSION["id"].'" id="idUsuario" name="idUsuario">
+							      <input type="hidden" value="'.$_SESSION["password"].'" name="passUsuario">
+							      <input type="hidden" value="'.$_SESSION["foto"].'" name="fotoUsuario" id="fotoUsuario">
+							      <input type="hidden" value="'.$_SESSION["modo"].'" name="modoUsuario" id="modoUsuario">';
 
 
-								if($_SESSION["modo"] == "directo"){
+							if($_SESSION["modo"] == "directo"){
 
-									if($_SESSION["foto"] != ""){
+								if($_SESSION["foto"] != ""){
 
-										echo '<img src="'.$url.$_SESSION["foto"].'" class="img-thumbnail">';
-
-									}else{
-
-										echo '<img src="'.$servidor.'vistas/img/usuarios/default/anonymous.png" class="img-thumbnail">';
-
-									}
-						
+									echo '<img src="'.$url.$_SESSION["foto"].'" class="img-thumbnail">';
 
 								}else{
 
-									echo '<img src="'.$_SESSION["foto"].'" class="img-thumbnail">';
-								}		
+									echo '<img src="'.$servidor.'vistas/img/usuarios/default/anonymous.png" class="img-thumbnail">';
 
-								?>
+								}
+					
+
+							}else{
+
+								echo '<img src="'.$_SESSION["foto"].'" class="img-thumbnail">';
+							}		
+
+							?>
 
 							</figure>
 
@@ -589,7 +589,7 @@ SECCIÓN PERFIL
 
 							if($_SESSION["modo"] == "directo"){
 							
-								echo '<button type="button" class="btn btn-default" id="btnCambiarFoto">
+							echo '<button type="button" class="btn btn-default" id="btnCambiarFoto">
 									
 									Cambiar foto de perfil
 									
@@ -671,18 +671,7 @@ SECCIÓN PERFIL
 										<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 										<input type="text" class="form-control" id="editarEmail" name="editarEmail" value="'.$_SESSION["email"].'">
 
-								</div>
-
-								<br>
-
-								<label class="control-label text-muted text-uppercase" for="editarEmail">Telefono:</label>
-
-								<div class="input-group">
-								
-										<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-										<input type="num" class="form-control" id="editarTelefono" name="editarTelefono" value="'.$_SESSION["telefono"].'">
-
-								</div>
+									</div>
 
 								<br>
 

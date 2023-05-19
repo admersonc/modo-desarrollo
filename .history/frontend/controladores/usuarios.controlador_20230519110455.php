@@ -258,7 +258,6 @@ class ControladorUsuarios{
 						$_SESSION["nombre"] = $respuesta["nombre"];
 						$_SESSION["foto"] = $respuesta["foto"];
 						$_SESSION["email"] = $respuesta["email"];
-						$_SESSION["telefono"] = $respuesta["telefono"];
 						$_SESSION["password"] = $respuesta["password"];
 						$_SESSION["modo"] = $respuesta["modo"];
 
@@ -369,7 +368,7 @@ class ControladorUsuarios{
 						CAMBIO DE CONTRASEÑA
 						=============================================*/
 
-						date_default_timezone_set("America/Lima");
+						date_default_timezone_set("America/Bogota");
 
 						$url = Ruta::ctrRuta();	
 
@@ -585,7 +584,6 @@ class ControladorUsuarios{
 				$_SESSION["nombre"] = $respuesta2["nombre"];
 				$_SESSION["foto"] = $respuesta2["foto"];
 				$_SESSION["email"] = $respuesta2["email"];
-				$_SESSION["telefono"] = $respuesta2["telefono"];
 				$_SESSION["password"] = $respuesta2["password"];
 				$_SESSION["modo"] = $respuesta2["modo"];
 
@@ -598,7 +596,6 @@ class ControladorUsuarios{
 				$_SESSION["nombre"] = $respuesta2["nombre"];
 				$_SESSION["foto"] = $respuesta2["foto"];
 				$_SESSION["email"] = $respuesta2["email"];
-				$_SESSION["telefono"] = $respuesta2["telefono"];
 				$_SESSION["password"] = $respuesta2["password"];
 				$_SESSION["modo"] = $respuesta2["modo"];
 
@@ -709,11 +706,8 @@ class ControladorUsuarios{
 
 			}
 
-			//$telefono=
-
 			$datos = array("nombre" => $_POST["editarNombre"],
 						   "email" => $_POST["editarEmail"],
-						   "telefono"=> $_POST["editarTelefono"],
 						   "password" => $password,
 						   "foto" => $ruta,
 						   "id" => $_POST["idUsuario"]);
@@ -729,7 +723,6 @@ class ControladorUsuarios{
 				$_SESSION["nombre"] = $datos["nombre"];
 				$_SESSION["foto"] = $datos["foto"];
 				$_SESSION["email"] = $datos["email"];
-				$_SESSION["telefono"] = $datos["telefono"];
 				$_SESSION["password"] = $datos["password"];
 				$_SESSION["modo"] = $_POST["modoUsuario"];
 

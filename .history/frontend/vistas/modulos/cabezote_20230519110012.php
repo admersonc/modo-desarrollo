@@ -459,7 +459,7 @@ VENTANA MODAL PARA EL REGISTRO
 						
 						</span>
 
-						<input type="number" class="form-control text-uppercase" id="regTelefono" name="regTelefono" placeholder="Numero de Celular" required>
+						<input type="number" class="form-control text-uppercase" id="reTelefono" name="reTelefono" placeholder="Numero de Celular" required>
 
 					</div>
 

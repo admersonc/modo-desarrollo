@@ -680,7 +680,7 @@ SECCIÓN PERFIL
 								<div class="input-group">
 								
 										<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-										<input type="num" class="form-control" id="editarTelefono" name="editarTelefono" value="'.$_SESSION["telefono"].'">
+										<input type="text" class="form-control" id="editarEmail" name="editarEmail" value="'.$_SESSION["telefono"].'">
 
 								</div>
 

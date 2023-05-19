@@ -389,7 +389,7 @@ VENTANA MODAL PARA EL REGISTRO
 				
 				<p>
 				  <i class="fa fa-facebook"></i>
-					Registro con Facebook2
+					Registro con Facebook
 				</p>
 
 			</div>
@@ -444,22 +444,6 @@ VENTANA MODAL PARA EL REGISTRO
 						</span>
 
 						<input type="email" class="form-control" id="regEmail" name="regEmail" placeholder="Correo Electrónico" required>
-
-					</div>
-
-				</div>
-
-				<div class="form-group">
-					
-					<div class="input-group">
-						
-						<span class="input-group-addon">
-							
-							<i class="glyphicon glyphicon-earphone"></i>
-						
-						</span>
-
-						<input type="number" class="form-control text-uppercase" id="regTelefono" name="regTelefono" placeholder="Numero de Celular" required>
 
 					</div>
 

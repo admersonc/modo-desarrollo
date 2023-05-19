@@ -455,22 +455,6 @@ VENTANA MODAL PARA EL REGISTRO
 						
 						<span class="input-group-addon">
 							
-							<i class="glyphicon glyphicon-earphone"></i>
-						
-						</span>
-
-						<input type="number" class="form-control text-uppercase" id="regTelefono" name="regTelefono" placeholder="Numero de Celular" required>
-
-					</div>
-
-				</div>
-
-				<div class="form-group">
-					
-					<div class="input-group">
-						
-						<span class="input-group-addon">
-							
 							<i class="glyphicon glyphicon-lock"></i>
 						
 						</span>

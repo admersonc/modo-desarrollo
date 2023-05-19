@@ -14,14 +14,12 @@ class ModeloUsuarios{
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
 		$stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
-		//----AGREGANDO TELFONO----------------
-		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_INT);
-		//----END TELFONO----------------
 		$stmt->bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
 		$stmt->bindParam(":modo", $datos["modo"], PDO::PARAM_STR);
 		$stmt->bindParam(":verificacion", $datos["verificacion"], PDO::PARAM_INT);
 		$stmt->bindParam(":emailEncriptado", $datos["emailEncriptado"], PDO::PARAM_STR);
-		
+		//----AGREGANDO TELFONO----------------
+		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_INT);
 		if($stmt->execute()){
 
 			return "ok";
@@ -90,12 +88,11 @@ class ModeloUsuarios{
 
 	static public function mdlActualizarPerfil($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, email = :email, password = :password, telefono = :telefono, foto = :foto WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, email = :email, password = :password, foto = :foto WHERE id = :id");
 
 		$stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt -> bindParam(":email", $datos["email"], PDO::PARAM_STR);
 		$stmt -> bindParam(":password", $datos["password"], PDO::PARAM_STR);
-		$stmt -> bindParam(":telefono", $datos["telefono"], PDO::PARAM_INT);
 		$stmt -> bindParam(":foto", $datos["foto"], PDO::PARAM_STR);
 		$stmt -> bindParam(":id", $datos["id"], PDO::PARAM_INT);
 
